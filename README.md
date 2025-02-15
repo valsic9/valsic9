@@ -14,3 +14,22 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+<!--START_SECTION:activity-->
+
+name: Update README
+on:
+schedule: - cron: "_/30 _ \* \* \*"
+workflow_dispatch:
+jobs:
+build:
+name: Update this repo's README with recent activity
+runs-on: ubuntu-latest
+permissions:
+contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: jamesgeorge007/github-activity-readme@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
